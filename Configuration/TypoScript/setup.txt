@@ -1,0 +1,10 @@
+plugin.tx_powermail {
+	view {
+		partialRootPath = EXT:powermailext/Resources/Private/Partials/Powermail/
+	}
+}
+page {
+	includeJS {
+		pmExtValidation = EXT:powermailext/Resources/Public/JavaScript/validation.js
+	}
+}

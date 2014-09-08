@@ -1,0 +1,32 @@
+config.tx_extbase {
+	objects {
+		In2code\Powermail\Domain\Model\Field {
+			className = WorldDirect\Powermailext\Domain\Model\Field
+		}
+		In2code\Powermail\Domain\Validator\InputValidator {
+			className = WorldDirect\Powermailext\Domain\Validator\InputValidator
+		}
+		In2code\Powermail\ViewHelpers\Validation\ValidationDataAttributeViewHelper {
+			className = WorldDirect\Powermailext\ViewHelpers\Validation\ValidationDataAndAttributesViewHelper
+		}
+	}
+	persistence {
+        classes {
+            WorldDirect\Powermailext\Domain\Model\Field {
+                mapping {
+                    tableName = tx_powermail_domain_model_fields
+					recordType = Tx_Powermailext_Domain_Model_Field
+					columns {
+						tx_powermailext_disabled.mapOnProperty = disabled
+						tx_powermailext_readonly.mapOnProperty = readonly
+						tx_powermailext_maxlength.mapOnProperty = maxlength
+						tx_powermailext_validation_condition.mapOnProperty = validationCondition
+						tx_powermailext_validation_condition_field.mapOnProperty = validationConditionField
+						tx_powermailext_validation_condition_operator.mapOnProperty = validationConditionOperator
+						tx_powermailext_validation_condition_value.mapOnProperty = validationConditionValue
+					}
+                }
+            }  
+    	}
+    }
+}

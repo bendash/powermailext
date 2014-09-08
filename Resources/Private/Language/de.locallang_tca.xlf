@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2014-07-23T13:25:20Z" product-name="powermailext">
+		<header/>
+		<body>
+			<trans-unit id="tx_powermailext_domain_model_field.attributes">
+				<target>Attribute</target>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.attributes.disabled">
+				<target>Deaktiviert</target>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.attributes.readonly">
+				<target>Gesperrt</target>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.attributes.maxlength">
+				<target>Maximallänge</target>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.validation_condition">
+				<target>Bedingte Feldüberprüfung</target>
+			</trans-unit>
+			<trans-unit id="tx_powermailext.validation_condition.activate">
+				<target>Aktivieren</target>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_field">
+				<target>Feld</target>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_operator">
+				<target>Operator</target>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_operator.0">
+				<target>nicht leer</target>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_operator.1">
+				<target>gleich</target>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_operator.2">
+				<target>größer als</target>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_operator.3">
+				<target>kleiner als</target>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_operator.4">
+				<target>enthält</target>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_value">
+				<target>Wert</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

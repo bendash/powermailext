@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-07-23T13:25:20Z" product-name="powermailext">
+		<header/>
+		<body>
+			<trans-unit id="tx_powermailext_domain_model_field.attributes">
+				<source>Attributes</source>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.attributes.disabled">
+				<source>Disabled</source>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.attributes.readonly">
+				<source>Readonly</source>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.attributes.maxlength">
+				<source>Maxlength</source>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.validation_condition">
+				<source>Conditional Validation</source>
+			</trans-unit>
+			<trans-unit id="tx_powermailext.validation_condition.activate">
+				<source>Activate</source>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_field">
+				<source>Field</source>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_operator">
+				<source>Operator</source>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_operator.0">
+				<source>not empty</source>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_operator.1">
+				<source>equal</source>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_operator.2">
+				<source>greater than</source>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_operator.3">
+				<source>less than</source>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_operator.4">
+				<source>contains</source>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_value">
+				<source>Value</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
