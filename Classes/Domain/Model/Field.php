@@ -68,7 +68,7 @@ class Field extends \In2Code\Powermail\Domain\Model\Field {
 	 *
 	 * @var \In2code\Powermail\Domain\Model\Field
 	 */
-	protected $validationConditionField = NULL;
+	protected $validationConditionField;
 	
 	/**
 	 * validationConditionOperator
