@@ -22,6 +22,8 @@ In my opinion - additionally - it was a little effort to create all the rule and
 
 I don't want to cheapen the great 'powermail_cond' Extension, but the above reasons made me finding a simpler solution for the conditional validation. Maybe it is fixed now.
 
+Powermailext requires jQuery Library to be included in the frontend.
+
 Powermailext provides fluid Templates for some partials of powermail, if you want to use this functionality in your own template, make sure you include the following at the top of your fluid template:
 ```
 {namespace pmext=WorldDirect\Powermailext\ViewHelpers}
