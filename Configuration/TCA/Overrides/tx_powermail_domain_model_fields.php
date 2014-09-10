@@ -76,6 +76,7 @@ $tempColumns = array(
 		'label' => 'LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.validation_condition_value',
 		'displayCond' => 'FIELD:tx_powermailext_validation_condition:=:1',
 		'config' => array(
+			'size' => 8,
 			'type' => 'input',
 			'eval' => 'trim'
 		),
