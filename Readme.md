@@ -20,7 +20,7 @@ This Extension was developed to add some functionality powermail.
 The Developers of Powermail developed an Extension 'powermail_cond' which should provide features like conditional Validation (and Display). Although the conditional displaying of fields in frontend worked (a little delayed, because it uses AJAX for the test), the field was still validated server-side after submission. So it was impossible to have a mandatory field which is only mandatory when a other field meets a requirement..
 In my opinion - additionally - it was a little effort to create all the rule and condition records. And you don't see if a field has a condition or rule when you are editing the powermail form..
 
-I don't want to cheapen the 'powermail_cond' Extension, but the above reasons made me finding a simpler solution for the conditional validation
+I don't want to cheapen the great 'powermail_cond' Extension, but the above reasons made me finding a simpler solution for the conditional validation. Maybe it is fixed now.
 
 Powermailext provides fluid Templates for some partials of powermail, if you want to use this functionality in your own template, make sure you include the following at the top of your fluid template:
 ```
