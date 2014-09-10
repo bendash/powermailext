@@ -1,6 +1,6 @@
 # Powermail Ext #
 
-This Extension was developed to add some functionality powermail currently does not deliver.
+This Extension was developed to add some functionality powermail.
 
 
 ## What does it do? ##
