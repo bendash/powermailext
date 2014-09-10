@@ -34,6 +34,7 @@ Powermailext provides fluid Templates for some partials of powermail, if you wan
 Sometimes, you need to mark input fields with attributes like "readonly", "disabled" or specify the "maxlength" Attribute. With this Extension installed, the Powermail Record got a new section "Attributes" in the tag "Extended"
 Here you can activate the desired Attributes.
 
+![Screenshot from Attributes Section in Backend](Documentation/Images/attributes.jpg "Attributes Section")
 
 There is a View Helper which extends the 'ValidationDataAttribute' View Helper called 'ValidationDataAndAttributes' View Helper. Make sure you use this View Helper instead of the Powermail's View Helper:
 
@@ -70,18 +71,39 @@ This View Helper also takes care of array handling and nested Answers.
 
 ### Conditional Validation ###
 
-The Main Feature of this Extension is the conditional Validation. It offers the opportunity, to only validate fields (client and server side) if a other field meets a specific requirement. For example, you want to display the field 'customer id' only if the user checks the box 'I am already customer'.
+The Main Feature of this Extension is the conditional Validation. It offers the opportunity, to only validate fields (client and server side) if a other field meets a specific requirement.
 
 In Backend, you can define your validation condition for a powermail field. After activating the conditional validation, three new fields appear:
   - Field (the field from which the current depends on)
   - Operator (the operator which will be used for comparison)
   - Value (the value which will be compared with the field value of 'Field')
 
-To achieve the above example, you need two fields in your page
-  * a Checkbox
-  * a Input
+![Screenshot from Conditional Validation Section in Backend](Documentation/Images/cond_validation.jpg "Conditional Validation Section")
+
+
+#### Example ####
+
+For example, you want to display the field 'customer id' only if the user checks the box 'I am already customer', and display different further options when checked a specific radio button.
+
+To achieve the above example, you need the following fields in your form
+  * Checkboxes (I am already customer)
+  * Input (Customer ID)
+  * Radio (Choose Brand)
+  * Checkboxes (Audi)
+  * Checkboxes (BMW)
+
+This will generate a form like this in the Frontend (unstyled)
+
+![Screenshot from Form in Frontend](Documentation/Images/form.jpg "Form in Frontend")
+
 
 Add a Label and a value (the use of integer 1 as checkbox value for enabling/disabling checkbox has proven to be..) to the checkbox and activate the conditional validation of the input field.
 Select the checkbox in the select box, use 'equal' as operator and insert '1' as value.
 
-When you check your form in the frontend, you will notice that the input is hidden if the checkbox is not checked. Check the checkbox to toggle the visibility of the input field.
+![Screenshot of checkbox trigger field in Backend](Documentation/Images/form_be_triggerfield.jpg "Trigger Field 'I am already Customer'")
+
+![Screenshot of dependent input field in Backend](Documentation/Images/form_be_dependentfield.jpg "Dependent Field 'Customer ID'")
+
+When you check your form in the frontend, you will notice that the input is hidden if the checkbox is not checked. Check the checkbox to toggle the visibility of the input field. In this Screenshot also the option for the choosing of car models depends on the selection of the brand. The configuration is nearly the same like for Customer ID.
+
+![Screenshot of form with checked checkbox in Frontend](Documentation/Images/form_checked.jpg "Form in Frontend after user action")
