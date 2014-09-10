@@ -3,7 +3,7 @@
 This Extension was developed to add some functionality powermail.
 
 
-## What does it do? ##
+## Features ##
 
 This extension adds some functionality to the powermail Extension.
   - Additional HTML Tag Attributes (maxlength, disabled, readonly) for Input/Select Fields
