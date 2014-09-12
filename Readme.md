@@ -6,7 +6,7 @@ This Extension was developed to add some functionality powermail.
 ## Features ##
 
   - Additional HTML Tag Attributes (maxlength, disabled, readonly) for Input/Select Fields
-  - Conditional Validation (and Display)
+  - Dependencies for Fields of other Fields: Conditional Validation and Display
   - Viewhelper for correct Text Answer in Confirmation View for Radiobuttons and Checkboxes
 
 ## Installing ##
@@ -29,16 +29,20 @@ Powermailext provides fluid Templates for some partials of powermail, if you wan
 {namespace pmext=WorldDirect\Powermailext\ViewHelpers}
 ```
 
-### Conditional Validation ###
+### Dependency ###
 
-The Main Feature of this Extension is the conditional Validation. It offers the opportunity, to only validate fields (client and server side) if a other field meets a specific requirement.
+The Main Feature of this Extension is the Dependency.
+With this Feature it is possible to:
+ -  only validate fields (client and server side) if a other field meets a specific requirement.
+ -  show / hide fields in the form if a other field meets a specific requirement.
 
 In Backend, you can define your validation condition for a powermail field. After activating the conditional validation, three new fields appear:
   - Field (the field from which the current depends on)
   - Operator (the operator which will be used for comparison)
   - Value (the value which will be compared with the field value of 'Field')
+  - Action (the Action(s) which are affected to the dependent field)
 
-![Screenshot from Conditional Validation Section in Backend](Documentation/Images/cond_validation.jpg "Conditional Validation Section")
+![Screenshot from Dependency Section in Backend](Documentation/Images/cond_validation.jpg "Dependency Section")
 
 
 #### Example ####
@@ -58,7 +62,7 @@ This will generate a form like this in the Frontend (unstyled)
 
 
 Add a Label and a value (the use of integer 1 as checkbox value for enabling/disabling checkbox has proven to be..) to the checkbox and activate the conditional validation of the input field.
-Select the checkbox in the select box, use 'equal' as operator and insert '1' as value.
+Select the checkbox in the select box, use 'equal' as operator and insert '1' as value. For the action choose 'toggle visibility and validation'. This will cause the field to change its visibility if the checkbox is checked. Additionally, the field will only be validated if the checkbox is checked. If you want only the one feature or the other, you can easily change it in the backend via setting the action to an other option.
 
 ![Screenshot of checkbox trigger field in Backend](Documentation/Images/form_be_triggerfield.jpg "Trigger Field 'I am already Customer'")
 
