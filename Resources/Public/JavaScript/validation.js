@@ -1,6 +1,6 @@
 jQuery(function() {
 	
-	jQuery('form.powermail_form').each(function() {
+	jQuery('form').each(function() {
 		
 		var $dependentFields = jQuery(this).find('[data-depends-on]');
 		var dependentTriggers = {};
@@ -10,7 +10,7 @@ jQuery(function() {
 		
 		jQuery.each(dependentTriggers, function(triggerField, value) {
 			var $triggerFields = jQuery('[name*="'+triggerField+'"]');
-			$triggerFields.on('change keyup', function(event) {
+			$triggerFields.on('change pmext.init', function(event) {
 				$changedField = jQuery(event.target);
 				$dependentFields.each(function() {
 					if ($changedField.prop('name').indexOf(jQuery(this).data('depends-on')) > -1) {
@@ -29,37 +29,38 @@ jQuery(function() {
 						}
 						switch($(this).data('depends-on-operator')) {
 							// not empty
-							case 0:
+							case 1:
 								shouldShow = changedVal != '';
 								break;
 							// equal
-							case 1:
+							case 2:
 								shouldShow = jQuery(this).data('depends-on-value') == changedVal;
 								break;
 							// greater than
-							case 2:
+							case 3:
 								shouldShow = changedVal > jQuery(this).data('depends-on-value');
 								break;
 							// less than
-							case 3:
+							case 4:
 								shouldShow = changedVal < jQuery(this).data('depends-on-value');
 								break;
 							// contains
-							case 4:
-								shouldShow = changedVal.indexOf(jQuery(this).data('depends-on-value')) > -1;
+							case 5:
+								shouldShow = jQuery(this).data('depends-on-value').indexOf(changedVal) > -1;
 								break;
 						}
 						if (invertResult)
 							shouldShow = !shouldShow;
 						if(shouldShow) {
 							jQuery(this).show();
+							jQuery(this).find('> input').trigger('pmext.visibility.change');
 						} else {
 							jQuery(this).hide();
-							jQuery(this).find('> input').val('');
+							jQuery(this).find('> input').trigger('pmext.visibility.change');
 						}
 					}
 				});
-			}).trigger('change');
+			}).trigger('pmext.init');
 		});
 	});
 });

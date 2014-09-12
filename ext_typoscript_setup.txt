@@ -20,10 +20,11 @@ config.tx_extbase {
 						tx_powermailext_disabled.mapOnProperty = disabled
 						tx_powermailext_readonly.mapOnProperty = readonly
 						tx_powermailext_maxlength.mapOnProperty = maxlength
-						tx_powermailext_validation_condition.mapOnProperty = validationCondition
-						tx_powermailext_validation_condition_field.mapOnProperty = validationConditionField
-						tx_powermailext_validation_condition_operator.mapOnProperty = validationConditionOperator
-						tx_powermailext_validation_condition_value.mapOnProperty = validationConditionValue
+						tx_powermailext_dependency.mapOnProperty = dependency
+						tx_powermailext_dependency_field.mapOnProperty = dependencyField
+						tx_powermailext_dependency_operator.mapOnProperty = dependencyOperator
+						tx_powermailext_dependency_value.mapOnProperty = dependencyValue
+						tx_powermailext_dependency_action.mapOnProperty = dependencyAction
 					}
                 }
             }  

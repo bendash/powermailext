@@ -15,35 +15,47 @@
 			<trans-unit id="tx_powermailext_domain_model_field.attributes.maxlength">
 				<target>Maximallänge</target>
 			</trans-unit>
-			<trans-unit id="tx_powermailext_domain_model_field.validation_condition">
-				<target>Bedingte Feldüberprüfung</target>
+			<trans-unit id="tx_powermailext_domain_model_field.dependency">
+				<target>Abhängigkeit</target>
 			</trans-unit>
-			<trans-unit id="tx_powermailext.validation_condition.activate">
+			<trans-unit id="tx_powermailext.dependency.activate">
 				<target>Aktivieren</target>
 			</trans-unit>
-			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_field">
+			<trans-unit id="tx_powermailext_domain_model_field.dependency_field">
 				<target>Feld</target>
 			</trans-unit>
-			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_operator">
+			<trans-unit id="tx_powermailext_domain_model_field.dependency_operator">
 				<target>Operator</target>
 			</trans-unit>
-			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_operator.0">
+			<trans-unit id="tx_powermailext_domain_model_field.dependency_operator.1">
 				<target>nicht leer</target>
 			</trans-unit>
-			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_operator.1">
+			<trans-unit id="tx_powermailext_domain_model_field.dependency_operator.2">
 				<target>gleich</target>
 			</trans-unit>
-			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_operator.2">
+			<trans-unit id="tx_powermailext_domain_model_field.dependency_operator.3">
 				<target>größer als</target>
 			</trans-unit>
-			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_operator.3">
+			<trans-unit id="tx_powermailext_domain_model_field.dependency_operator.4">
 				<target>kleiner als</target>
 			</trans-unit>
-			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_operator.4">
+			<trans-unit id="tx_powermailext_domain_model_field.dependency_operator.5">
 				<target>enthält</target>
 			</trans-unit>
-			<trans-unit id="tx_powermailext_domain_model_field.validation_condition_value">
+			<trans-unit id="tx_powermailext_domain_model_field.dependency_value">
 				<target>Wert</target>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.dependency_action">
+				<target>Auswirkung auf</target>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.dependency_action.1">
+				<target>Sichtbarkeit und Validierung</target>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.dependency_action.2">
+				<target>Sichtbarkeit</target>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.dependency_action.3">
+				<target>Validierung</target>
 			</trans-unit>
 		</body>
 	</file>

@@ -57,34 +57,34 @@ class InputValidator extends \In2code\Powermail\Domain\Validator\InputValidator 
 	 * @param \In2code\Powermail\Domain\Model\Mail $mail
 	 */
 	public function fieldShouldBeValidated($field, $mail) {
-		if ($field->getValidationCondition()) {
-			$theAnswer = $this->getAnswerFromField($field->getValidationConditionField(), $mail);
+		if ($field->getDependency() && in_array($field->getDependencyAction(), array(1,3))) {
+			$theAnswer = $this->getAnswerFromField($field->getDependencyField(), $mail);
 			if (is_array($theAnswer))
 				$theAnswer = join('', $theAnswer);
-			switch ($field->getValidationConditionOperator()) {
+			switch ($field->getDependencyOperator()) {
 				// not empty
-				case 0:
+				case 1:
 					if ($theAnswer)
 						return TRUE;
 					break;
 				// equal
-				case 1:
-					if ($theAnswer == $field->getValidationConditionValue())
+				case 2:
+					if ($theAnswer == $field->getDependencyValue())
 						return TRUE;
 					break;
 				// greater than
-				case 2:
-					if ($theAnswer > $field->getValidationConditionValue())
+				case 3:
+					if ($theAnswer > $field->getDependencyValue())
 						return TRUE;
 					break;
 				// less than (integer)
-				case 3:
-					if ($theAnswer < $field->getValidationConditionValue())
+				case 4:
+					if ($theAnswer < $field->getDependencyValue())
 						return TRUE;
 					break;
 				// contains (for multiple checkboxes)
-				case 4:
-					if (strpos($theAnswer, $field->getValidationConditionValue()) !== false)
+				case 5:
+					if (strpos($theAnswer, $field->getDependencyValue()) !== false)
 						return TRUE;
 					break;
 			}

@@ -33,18 +33,18 @@ $tempColumns = array(
 			'default' => 0,
 		),
 	),
-	'tx_powermailext_validation_condition' => array(
+	'tx_powermailext_dependency' => array(
 		'exclude' => 0,
-		'label' => 'LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext.validation_condition.activate',
+		'label' => 'LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext.dependency.activate',
 		'config' => array(
 			'type' => 'check',
 			'default' => 0,
 		),
 	),
-	'tx_powermailext_validation_condition_field' => array(
+	'tx_powermailext_dependency_field' => array(
 		'exclude' => 0,
-		'label' => 'LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.validation_condition_field',
-		'displayCond' => 'FIELD:tx_powermailext_validation_condition:=:1',
+		'label' => 'LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.dependency_field',
+		'displayCond' => 'FIELD:tx_powermailext_dependency:=:1',
 		'config' => array(
 			'type' => 'select',
 			'items' => array(
@@ -55,30 +55,46 @@ $tempColumns = array(
 			'default' => 0,
 		),
 	),
-	'tx_powermailext_validation_condition_operator' => array(
+	'tx_powermailext_dependency_operator' => array(
 		'exclude' => 0,
-		'label' => 'LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.validation_condition_operator',
-		'displayCond' => 'FIELD:tx_powermailext_validation_condition:=:1',
+		'label' => 'LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.dependency_operator',
+		'displayCond' => 'FIELD:tx_powermailext_dependency:=:1',
 		'config' => array(
 			'type' => 'select',
 			'items' => array(
-				array('LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.validation_condition_operator.0', 0),
-				array('LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.validation_condition_operator.1', 1),
-				array('LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.validation_condition_operator.2', 2),
-				array('LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.validation_condition_operator.3', 3),
-				array('LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.validation_condition_operator.4', 4)
+				array('LLL:EXT:powermail/Resources/Private/Language/locallang_db.xlf:pleaseChoose', 0),
+				array('LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.dependency_operator.1', 1),
+				array('LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.dependency_operator.2', 2),
+				array('LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.dependency_operator.3', 3),
+				array('LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.dependency_operator.4', 4),
+				array('LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.dependency_operator.5', 5)
 			),
-			'default' => 0,
+			'default' => 1,
 		),
 	),
-	'tx_powermailext_validation_condition_value' => array(
+	'tx_powermailext_dependency_value' => array(
 		'exclude' => 0,
-		'label' => 'LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.validation_condition_value',
-		'displayCond' => 'FIELD:tx_powermailext_validation_condition:=:1',
+		'label' => 'LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.dependency_value',
+		'displayCond' => 'FIELD:tx_powermailext_dependency:=:1',
 		'config' => array(
 			'size' => 8,
 			'type' => 'input',
 			'eval' => 'trim'
+		),
+	),
+	'tx_powermailext_dependency_action' => array(
+		'exclude' => 0,
+		'label' => 'LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.dependency_action',
+		'displayCond' => 'FIELD:tx_powermailext_dependency:=:1',
+		'config' => array(
+			'type' => 'select',
+			'items' => array(
+				array('LLL:EXT:powermail/Resources/Private/Language/locallang_db.xlf:pleaseChoose', 0),
+				array('LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.dependency_action.1', 1),
+				array('LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.dependency_action.2', 2),
+				array('LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.dependency_action.3', 3)
+			),
+			'default' => 0,
 		),
 	),
 	'tx_extbase_type' => array(
@@ -102,20 +118,20 @@ $GLOBALS['TCA']['tx_powermail_domain_model_fields']['palettes'][$additionalAttri
 	'canNotCollapse' => 1,
 	'showitem' => 'tx_powermailext_disabled, tx_powermailext_readonly, tx_powermailext_maxlength'
 );
-// create new palette with the fields in showitem for validation_condition*
-$validationCondtionPaletteIndex = $additionalAttributesPaletteIndex + 1;
-$GLOBALS['TCA']['tx_powermail_domain_model_fields']['palettes'][$validationCondtionPaletteIndex] = array(
+// create new palette with the fields in showitem for dependency*
+$dependencyPaletteIndex = $additionalAttributesPaletteIndex + 1;
+$GLOBALS['TCA']['tx_powermail_domain_model_fields']['palettes'][$dependencyPaletteIndex] = array(
 	'canNotCollapse' => 1,
-	'showitem' => 'tx_powermailext_validation_condition, tx_powermailext_validation_condition_field, tx_powermailext_validation_condition_operator, tx_powermailext_validation_condition_value'
+	'showitem' => 'tx_powermailext_dependency, tx_powermailext_dependency_field, tx_powermailext_dependency_operator, tx_powermailext_dependency_value, --linebreak--, tx_powermailext_dependency_action'
 );
 
 // required for extending the model
 $GLOBALS['TCA']['tx_powermail_domain_model_fields']['ctrl']['type'] = 'tx_extbase_type';
-// reload TCA form if validation_condition is activated
-$GLOBALS['TCA']['tx_powermail_domain_model_fields']['ctrl']['requestUpdate'] .= ',tx_powermailext_validation_condition';
+// reload TCA form if dependency is activated
+$GLOBALS['TCA']['tx_powermail_domain_model_fields']['ctrl']['requestUpdate'] .= ',tx_powermailext_dependency';
 // show Validation options for date field too
 $GLOBALS['TCA']['tx_powermail_domain_model_fields']['columns']['validation']['displayCond'] .= ',date';
 // add the fields to all types for the powermail fields table
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', '--palette--;LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.clf:tx_powermailext_domain_model_field.attributes;'.$additionalAttributesPaletteIndex, '', 'before:mandatory');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', '--palette--;LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.clf:tx_powermailext_domain_model_field.validation_condition;'.$validationCondtionPaletteIndex, '', 'after:validation_configuration');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', '--palette--;LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.clf:tx_powermailext_domain_model_field.dependency;'.$dependencyPaletteIndex, '', 'after:validation_configuration');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', 'tx_extbase_type');

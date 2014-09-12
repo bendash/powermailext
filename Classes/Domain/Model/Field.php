@@ -57,32 +57,39 @@ class Field extends \In2Code\Powermail\Domain\Model\Field {
 	
 	
 	/**
-	 * validationCondition
+	 * dependency
 	 *
 	 * @var integer
 	 */
-	protected $validationCondition;
+	protected $dependency;
 
 	/**
-	 * validationConditionField
+	 * dependencyField
 	 *
 	 * @var \In2code\Powermail\Domain\Model\Field
 	 */
-	protected $validationConditionField;
+	protected $dependencyField;
 	
 	/**
-	 * validationConditionOperator
+	 * dependencyOperator
 	 *
 	 * @var integer
 	 */
-	protected $validationConditionOperator;
+	protected $dependencyOperator;
 
 	/**
-	 * validationConditionValue
+	 * dependencyValue
 	 *
 	 * @var string
 	 */
-	protected $validationConditionValue;
+	protected $dependencyValue;
+
+	/**
+	 * dependencyAction
+	 *
+	 * @var integer
+	 */
+	protected $dependencyAction;
 	
 	/**
 	 * @param integer $maxlength
@@ -130,63 +137,78 @@ class Field extends \In2Code\Powermail\Domain\Model\Field {
 	}
 
 	/**
-	 * @param string $validationCondition
+	 * @param string $dependency
 	 * @return void
 	 */
-	public function setValidationCondition($validationCondition) {
-		$this->validationCondition = $validationCondition;
+	public function setDependency($dependency) {
+		$this->dependency = $dependency;
 	}
 
 	/**
 	 * @return integer
 	 */
-	public function getValidationCondition() {
-		return $this->validationCondition;
+	public function getDependency() {
+		return $this->dependency;
 	}
 	
 	/**
-	 * @param \In2code\Powermail\Domain\Model\Field $validationConditionField
+	 * @param \In2code\Powermail\Domain\Model\Field $dependencyField
 	 * @return void
 	 */
-	public function setValidationConditionField($validationConditionField) {
-		$this->validationConditionField = $validationConditionField;
+	public function setDependencyField($dependencyField) {
+		$this->dependencyField = $dependencyField;
 	}
 
 	/**
 	 * @return \In2code\Powermail\Domain\Model\Field
 	 */
-	public function getValidationConditionField() {
-		return $this->validationConditionField;
+	public function getDependencyField() {
+		return $this->dependencyField;
 	}
 	
 	/**
-	 * @param integer $validationConditionOperator
+	 * @param integer $dependencyOperator
 	 * @return void
 	 */
-	public function setValidationOperator($validationConditionOperator) {
-		$this->validationConditionOperator = $validationConditionOperator;
+	public function setValidationOperator($dependencyOperator) {
+		$this->dependencyOperator = $dependencyOperator;
 	}
 
 	/**
 	 * @return integer
 	 */
-	public function getValidationConditionOperator() {
-		return $this->validationConditionOperator;
+	public function getDependencyOperator() {
+		return $this->dependencyOperator;
 	}
 	
 	/**
-	 * @param string $validationConditionValue
+	 * @param string $dependencyValue
 	 * @return void
 	 */
-	public function setValidationConditionValue($validationConditionValue) {
-		$this->validationConditionValue = $validationConditionValue;
+	public function setDependencyValue($dependencyValue) {
+		$this->dependencyValue = $dependencyValue;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getValidationConditionValue() {
-		return $this->validationConditionValue;
+	public function getDependencyValue() {
+		return $this->dependencyValue;
+	}
+	
+	/**
+	 * @param integer $dependencyAction
+	 * @return void
+	 */
+	public function setDependencyAction($dependencyAction) {
+		$this->dependencyAction = $dependencyAction;
+	}
+
+	/**
+	 * @return integer
+	 */
+	public function getDependencyAction() {
+		return $this->dependencyAction;
 	}
 
 }
