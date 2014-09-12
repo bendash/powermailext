@@ -42,8 +42,19 @@ In Backend, you can define your validation condition for a powermail field. Afte
   - Value (the value which will be compared with the field value of 'Field')
   - Action (the Action(s) which are affected to the dependent field)
 
-![Screenshot from Dependency Section in Backend](Documentation/Images/cond_validation.jpg "Dependency Section")
+![Screenshot from Dependency Section in Backend](Documentation/Images/dependency.jpg "Dependency Section")
 
+There is a View Helper which takes care of correct rendering of dependency information for Javascript called 'ContainerDataAttributes' View Helper. Make sure you use this View Helper at the html container element which holds the input field if you use your own Templates/Partials
+
+Partials/Form/FIELDNAME.html
+```
+<div id="powermail_fieldwrap... {pmext:Validation.ContainerDataAttributes(field:field)}>
+	<label> ... </label>
+	<f:form.FIELDNAME ... > 
+		...
+	</f:form.FIELDNAME>
+</div>
+```` 
 
 #### Example ####
 
