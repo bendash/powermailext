@@ -44,6 +44,10 @@ In Backend, you can define your validation condition for a powermail field. Afte
 
 ![Screenshot from Dependency Section in Backend](Documentation/Images/dependency.jpg "Dependency Section")
 
+#### Javascript Visibility Handling ####
+
+Powermailext toggles the visibility of form fields in the Frontend with Javascript.
+
 There is a View Helper which takes care of correct rendering of dependency information for Javascript called 'ContainerDataAttributes' View Helper. Make sure you use this View Helper at the html container element which holds the input field if you use your own Templates/Partials
 
 Partials/Form/FIELDNAME.html
@@ -55,6 +59,19 @@ Partials/Form/FIELDNAME.html
 	</f:form.FIELDNAME>
 </div>
 ```` 
+
+If you want to perform further actions with a field immediately after a visibility change, you can listen for this event in Javascript: (here using jQuery)
+
+```
+// event "pmext.visibility.change"
+
+$('input, select').on('pmext.visibility.change', function(event) {
+	// do something (access the field using event.target or this)
+});
+
+```
+
+which will be triggered on the affected field (the input or select tag)
 
 #### Example ####
 
