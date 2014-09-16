@@ -21,11 +21,11 @@ $EM_CONF[$_EXTKEY] = array(
 	'uploadfolder' => '0',
 	'createDirs' => '',
 	'clearCacheOnLoad' => 1,
-	'version' => '1.0',
+	'version' => '1.0.0',
 	'constraints' => array(
 		'depends' => array(
-			'typo3' => '6.2',
-			'powermail' => '2.1-0.0.0',
+			'typo3' => '6.2.0-0.0.0',
+			'powermail' => '2.1.1-0.0.0',
 			'static_info_tables' => '6.1.0-0.0.0'
 		),
 		'conflicts' => array(
