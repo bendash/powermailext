@@ -129,8 +129,6 @@ $GLOBALS['TCA']['tx_powermail_domain_model_fields']['palettes'][$dependencyPalet
 $GLOBALS['TCA']['tx_powermail_domain_model_fields']['ctrl']['type'] = 'tx_extbase_type';
 // reload TCA form if dependency is activated
 $GLOBALS['TCA']['tx_powermail_domain_model_fields']['ctrl']['requestUpdate'] .= ',tx_powermailext_dependency';
-// show Validation options for date field too
-$GLOBALS['TCA']['tx_powermail_domain_model_fields']['columns']['validation']['displayCond'] .= ',date';
 // add the fields to all types for the powermail fields table
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', '--palette--;LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.clf:tx_powermailext_domain_model_field.attributes;'.$additionalAttributesPaletteIndex, '', 'before:mandatory');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', '--palette--;LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.clf:tx_powermailext_domain_model_field.dependency;'.$dependencyPaletteIndex, '', 'after:validation_configuration');
