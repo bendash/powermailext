@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'Powermail Extended',
-	'description' => 'This extension extends powermail',
+	'description' => 'This Extension was developed to add some functionality powermail. Features: Dependencies for Fields of other Fields: Conditional Validation and Display, Additional Validators (IBAN, Birthdate 18+), Additional HTML Tag Attributes (maxlength, disabled, readonly) for Input/Select Fields, Viewhelper for correct Text Answer in Confirmation View for Radiobuttons and Checkboxes',
 	'category' => 'plugin',
 	'author' => 'Ben Walch',
 	'author_email' => 'ben.walch@world-direct.at',
