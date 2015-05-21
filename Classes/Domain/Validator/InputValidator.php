@@ -57,14 +57,14 @@ class InputValidator extends \In2code\Powermail\Domain\Validator\InputValidator 
 	 * @param \In2code\Powermail\Domain\Model\Mail $mail
 	 */
 	public function fieldShouldBeValidated($field, $mail) {
-		if ($field->getDependency() && in_array($field->getDependencyAction(), array(1,3))) {
+		if ($field->getDependency() && $field->getDependencyAction() % 3 == 0) {
 			$theAnswer = $this->getAnswerFromField($field->getDependencyField(), $mail);
 			if (is_array($theAnswer))
 				$theAnswer = join('', $theAnswer);
 			switch ($field->getDependencyOperator()) {
 				// not empty
 				case 1:
-					if (!empty($theAnswer))
+					if ($theAnswer)
 						return TRUE;
 					break;
 				// equal
@@ -84,11 +84,10 @@ class InputValidator extends \In2code\Powermail\Domain\Validator\InputValidator 
 					break;
 				// contains (for multiple checkboxes)
 				case 5:
-					if (strpos($theAnswer, $field->getDependencyValue()) !== FALSE)
+					if (strpos($theAnswer, $field->getDependencyValue()) !== false)
 						return TRUE;
 					break;
 			}
-			return FALSE;
 		} else {
 			return TRUE;
 		}

@@ -23,39 +23,32 @@ class DynamicValidator extends \WorldDirect\Powermailext\Domain\Validator\InputV
 				$field = $answer->getField();
 				if ($this->fieldShouldBeValidated($field, $mail)) {
 					switch ($field->getValidation()) {
-						// Birthdate
-						case 100:
-							if(!$this->validateBirthdate($field, $answer->getValue())) {
-								$pObj->setIsValid(FALSE);
-								$pObj->addError('Kein gültiges Geburtsdatum angegeben!', $field->getMarker());
-							}
-							break;
 						// IBAN
-						case 101:
+						case 100:
 							if(!$this->validateIBAN($field, $answer->getValue())) {
 								$pObj->setIsValid(FALSE);
 								$pObj->addError('Kein gültiger IBAN eingegeben!', $field->getMarker());
 							}
 							break;
+						// Birthdate
+						case 200:
+							if(!$this->validateBirthdate($field, $answer->getValue())) {
+								$pObj->setIsValid(FALSE);
+								$pObj->addError('Kein gültiges Geburtsdatum angegeben! Die Anmeldung ist für minderjährige leider nicht möglich.', $field->getMarker());
+							}
+							break;
+						// +/- 1 Year
+						case 201:
+							if(!$this->validateRegistrationdate($field, $answer->getValue())) {
+								$pObj->setIsValid(FALSE);
+								$pObj->addError('Kein gültiges Anmeldedatum eingegeben! (max. +/- 1 Jahr)', $field->getMarker());
+							}
+							break;					
 					}
 				}
 			}
 		}
     }
-	
-	/**
-	 *
-	 * validateBirthdate
-	 *
-	 * @param \WorldDirect\Powermailext\Domain\Model\Field $field
-	 * @return boolean
-	 */
-	private function validateBirthdate(\WorldDirect\Powermailext\Domain\Model\Field $field, $value) {
-		$birthDate = strtotime(trim($value));
-		$minBirthDate = strtotime('-100 years');
-		$maxBirthDate = strtotime('-18 years');
-		return ($birthDate >= $minBirthDate && $birthDate <= $maxBirthDate);
-	}
 	
 	/**
 	 * validateIBAN
@@ -108,6 +101,36 @@ class DynamicValidator extends \WorldDirect\Powermailext\Domain\Validator\InputV
 	 	$IBANcheck = strtr($IBANcheck, $characterMap);	 	
 	 	return bcmod($IBANcheck, 97) == 1;
 	}
+	
+	
+	/**
+	 *
+	 * validateBirthdate
+	 *
+	 * @param \WorldDirect\Powermailext\Domain\Model\Field $field
+	 * @return boolean
+	 */
+	private function validateBirthdate(\WorldDirect\Powermailext\Domain\Model\Field $field, $value) {
+		$birthDate = strtotime(trim($value));
+		$minBirthDate = strtotime('-100 years');
+		$maxBirthDate = strtotime('-18 years');
+		return ($birthDate >= $minBirthDate && $birthDate <= $maxBirthDate);
+	}
+	
+	/**
+	 *
+	 * validateRegistrationdate
+	 *
+	 * @param \WorldDirect\Powermailext\Domain\Model\Field $field
+	 * @return boolean
+	 */
+	private function validateRegistrationdate(\WorldDirect\Powermailext\Domain\Model\Field $field, $value) {
+		$registrationDate = strtotime(trim($value));
+		$minRegDate = strtotime('-1 years');
+		$maxRegDate = strtotime('+1 years');
+		return ($registrationDate >= $minRegDate && $registrationDate <= $maxRegDate);
+	}
+	
 	
 }
 ?>

@@ -5,6 +5,6 @@ plugin.tx_powermail {
 }
 page {
 	includeJS {
-		pmExtValidation = EXT:powermailext/Resources/Public/JavaScript/validation.js
+		pmExtValidation = EXT:powermailext/Resources/Public/JavaScript/dependency.js
 	}
 }

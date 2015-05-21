@@ -18,9 +18,9 @@ class ContainerDataAttributesViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper
 	 * @return \array for data attributes
 	 */
 	public function render(\In2code\Powermail\Domain\Model\Field $field = NULL) {
-	
-		if($field && $field->getDependency() && in_array($field->getDependencyAction(), array(1,2))) {
-			return 'data-depends-on="'.$field->getDependencyField()->getMarker().'" data-depends-on-operator="'.$field->getDependencyOperator().'" data-depends-on-value="'.$field->getDependencyValue().'"';
+				
+		if($field && $field->getDependency()) {
+			return 'data-depends-on="'.$field->getDependencyField()->getMarker().'" data-depends-on-operator="'.$field->getDependencyOperator().'" data-depends-on-value="'.$field->getDependencyValue().'" data-depends-on-action="'.$field->getDependencyAction().'"';
 		}
 		
 		return '';

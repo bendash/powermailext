@@ -33,7 +33,7 @@ namespace WorldDirect\Powermailext\Domain\Model;
  * @subpackage powermailext
  */
 class Field extends \In2Code\Powermail\Domain\Model\Field {
-	
+
 	/**
 	 * maxlength
 	 *
@@ -90,7 +90,7 @@ class Field extends \In2Code\Powermail\Domain\Model\Field {
 	 * @var integer
 	 */
 	protected $dependencyAction;
-	
+
 	/**
 	 * @param integer $maxlength
 	 * @return void

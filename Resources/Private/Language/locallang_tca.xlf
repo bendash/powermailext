@@ -3,6 +3,9 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2014-07-23T13:25:20Z" product-name="powermailext">
 		<header/>
 		<body>
+			<trans-unit id="tx_powermailext_domain_model_field.datepicker_date">
+				<source>Datum</source>
+			</trans-unit>
 			<trans-unit id="tx_powermailext_domain_model_field.attributes">
 				<source>Attributes</source>
 			</trans-unit>
@@ -46,16 +49,22 @@
 				<source>Value</source>
 			</trans-unit>
 			<trans-unit id="tx_powermailext_domain_model_field.dependency_action">
-				<source>Action</source>
+				<source>Impact</source>
 			</trans-unit>
 			<trans-unit id="tx_powermailext_domain_model_field.dependency_action.1">
-				<source>toggle visibility and validation</source>
+				<source>visibility and validation</source>
 			</trans-unit>
 			<trans-unit id="tx_powermailext_domain_model_field.dependency_action.2">
-				<source>toggle visibility</source>
+				<source>visibility</source>
 			</trans-unit>
 			<trans-unit id="tx_powermailext_domain_model_field.dependency_action.3">
-				<source>toggle validation</source>
+				<source>state and validation</source>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.dependency_action.4">
+				<source>state</source>
+			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.dependency_action.5">
+				<source>validation</source>
 			</trans-unit>
 		</body>
 	</file>

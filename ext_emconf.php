@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'Powermail Extended',
-	'description' => 'This Extension was developed to add some functionality powermail. Features: Dependencies for Fields of other Fields: Conditional Validation and Display, Additional Validators (IBAN, Birthdate 18+), Additional HTML Tag Attributes (maxlength, disabled, readonly) for Input/Select Fields, Viewhelper for correct Text Answer in Confirmation View for Radiobuttons and Checkboxes',
+	'description' => 'This extension extends powermail',
 	'category' => 'plugin',
 	'author' => 'Ben Walch',
 	'author_email' => 'ben.walch@world-direct.at',
@@ -21,12 +21,12 @@ $EM_CONF[$_EXTKEY] = array(
 	'uploadfolder' => '0',
 	'createDirs' => '',
 	'clearCacheOnLoad' => 1,
-	'version' => '1.2.0',
+	'version' => '1.0',
 	'constraints' => array(
 		'depends' => array(
-			'typo3' => '6.2.0-6.2.99',
-			'powermail' => '2.1.1-2.9.99',
-			'static_info_tables' => '6.1.0-6.2.99'
+			'typo3' => '6.2',
+			'powermail' => '2.1-0.0.0',
+			'static_info_tables' => '6.1.0-0.0.0'
 		),
 		'conflicts' => array(
 		),
