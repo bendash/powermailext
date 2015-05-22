@@ -64,7 +64,7 @@ class InputValidator extends \In2code\Powermail\Domain\Validator\InputValidator 
 			switch ($field->getDependencyOperator()) {
 				// not empty
 				case 1:
-					if ($theAnswer)
+					if (!empty($theAnswer))
 						return TRUE;
 					break;
 				// equal
@@ -84,10 +84,11 @@ class InputValidator extends \In2code\Powermail\Domain\Validator\InputValidator 
 					break;
 				// contains (for multiple checkboxes)
 				case 5:
-					if (strpos($theAnswer, $field->getDependencyValue()) !== false)
+					if (strpos($theAnswer, $field->getDependencyValue()) !== FALSE)
 						return TRUE;
 					break;
 			}
+			return FALSE;
 		} else {
 			return TRUE;
 		}

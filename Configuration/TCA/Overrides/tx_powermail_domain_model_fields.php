@@ -51,7 +51,7 @@ $tempColumns = array(
 				array('LLL:EXT:powermail/Resources/Private/Language/locallang_db.xlf:pleaseChoose', 0)
 			),
 			'foreign_table' => 'tx_powermail_domain_model_fields',
-			'foreign_table_where' => 'AND tx_powermail_domain_model_fields.pages IN (SELECT uid FROM tx_powermail_domain_model_pages WHERE tx_powermail_domain_model_pages.forms = (SELECT forms FROM tx_powermail_domain_model_pages WHERE tx_powermail_domain_model_pages.uid = ###REC_FIELD_pages###)) AND tx_powermail_domain_model_fields.uid <> ###THIS_UID###',
+			'foreign_table_where' => 'AND tx_powermail_domain_model_fields.pages = ###REC_FIELD_pages### AND tx_powermail_domain_model_fields.uid <> ###THIS_UID###',
 			'default' => 0,
 		),
 	),
@@ -88,7 +88,7 @@ $tempColumns = array(
 		'displayCond' => 'FIELD:tx_powermailext_dependency:=:1',
 		'config' => array(
 			'type' => 'select',
-			'items' => array(
+'items' => array(
 				array('LLL:EXT:powermail/Resources/Private/Language/locallang_db.xlf:pleaseChoose', 0),
 				array('LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.dependency_action.1', 3),
 				array('LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.dependency_action.2', 1),
@@ -111,6 +111,7 @@ $tempColumns = array(
 		)
 	)
 );
+
 // add tca columns
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tx_powermail_domain_model_fields', $tempColumns);
 
@@ -120,7 +121,7 @@ $GLOBALS['TCA']['tx_powermail_domain_model_fields']['palettes'][$additionalAttri
 	'canNotCollapse' => 1,
 	'showitem' => 'tx_powermailext_disabled, tx_powermailext_readonly, tx_powermailext_maxlength'
 );
-// create new palette with the fields in showitem for dependency*
+// create new palette with the fields in showitem for dependency
 $dependencyPaletteIndex = $additionalAttributesPaletteIndex + 1;
 $GLOBALS['TCA']['tx_powermail_domain_model_fields']['palettes'][$dependencyPaletteIndex] = array(
 	'canNotCollapse' => 1,
@@ -128,15 +129,12 @@ $GLOBALS['TCA']['tx_powermail_domain_model_fields']['palettes'][$dependencyPalet
 );
 
 // required for extending the model
-$GLOBALS['TCA']['tx_powermail_domain_model_fields']['ctrl']['type'] = 'tx_extbase_type';
+// we cant't use this since powermail 2.4 uses a different TCA type for every field type
+// $GLOBALS['TCA']['tx_powermail_domain_model_fields']['ctrl']['type'] = 'tx_extbase_type';
 // reload TCA form if dependency is activated
 $GLOBALS['TCA']['tx_powermail_domain_model_fields']['ctrl']['requestUpdate'] .= ',tx_powermailext_dependency';
-// show a few options too
-$GLOBALS['TCA']['tx_powermail_domain_model_fields']['columns']['mandatory']['displayCond'] .= ',typoscript';
-$GLOBALS['TCA']['tx_powermail_domain_model_fields']['columns']['placeholder']['displayCond'] .= ',date';
-$GLOBALS['TCA']['tx_powermail_domain_model_fields']['columns']['prefill_value']['displayCond'] .= ',date';
-$GLOBALS['TCA']['tx_powermail_domain_model_fields']['columns']['validation']['displayCond'] .= ',date';
 // add the fields to all types for the powermail fields table
+
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', '--palette--;LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.clf:tx_powermailext_domain_model_field.attributes;'.$additionalAttributesPaletteIndex, '', 'before:mandatory');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', '--palette--;LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.clf:tx_powermailext_domain_model_field.dependency;'.$dependencyPaletteIndex, '', 'after:validation_configuration');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', '--palette--;LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.clf:tx_powermailext_domain_model_field.dependency;'.$dependencyPaletteIndex, '', 'before:mandatory');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', 'tx_extbase_type');
