@@ -1,6 +1,8 @@
 <?php
 namespace WorldDirect\Powermailext\Domain\Validator;
 
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+
 class DynamicValidator extends \WorldDirect\Powermailext\Domain\Validator\InputValidator {
 	
 	/**
@@ -14,49 +16,76 @@ class DynamicValidator extends \WorldDirect\Powermailext\Domain\Validator\InputV
 	/**
 	 * validate
 	 *
-	 * @param \In2code\Powermail\Domain\Model\Mail $mail 
+	 * @param \In2code\Powermail\Domain\Model\Mail $mail
 	 * @param \In2code\Powermail\Domain\Validator\CustomValidator $pObj
 	 */
-	public function validate($mail, $pObj) {		
-		if($mail) {
+	public function validate($mail, $pObj) {
+		if(isset($mail)) {
 			foreach ($mail->getAnswers() as $answer) {
 				$field = $answer->getField();
-				if ($this->fieldShouldBeValidated($field, $mail)) {
-					switch ($field->getValidation()) {
-						// IBAN
-						case 100:
-							if(!$this->validateIBAN($field, $answer->getValue())) {
-								$pObj->setIsValid(FALSE);
-								$pObj->addError('Kein gültiger IBAN eingegeben!', $field->getMarker());
-							}
-							break;
-						// Birthdate
-						case 200:
-							if(!$this->validateBirthdate($field, $answer->getValue())) {
-								$pObj->setIsValid(FALSE);
-								$pObj->addError('Kein gültiges Geburtsdatum angegeben! Die Anmeldung ist für minderjährige leider nicht möglich.', $field->getMarker());
-							}
-							break;
-						// +/- 1 Year
-						case 201:
-							if(!$this->validateRegistrationdate($field, $answer->getValue())) {
-								$pObj->setIsValid(FALSE);
-								$pObj->addError('Kein gültiges Anmeldedatum eingegeben! (max. +/- 1 Jahr)', $field->getMarker());
-							}
-							break;					
-					}
+				switch ($field->getValidation()) {
+					// Date Range
+					case 100:
+						if(!$this->validateDateRange($answer->getValue(), $field->getValidationConfiguration())) {
+							$pObj->setIsValid(FALSE);
+							$pObj->addError('Kein gültiges Datum angegeben!', $field->getMarker());
+						}
+						break;
+					// IBAN
+					case 101:
+						if(!$this->validateIBAN($answer->getValue(), $field->getValidationConfiguration())) {
+							$pObj->setIsValid(FALSE);
+							$pObj->addError('Kein gültiger IBAN eingegeben!', $field->getMarker());
+						}
+						break;				
 				}
 			}
 		}
-    }
+  }
+	
+	/**
+	 *
+	 * validateDateRange
+	 *
+	 * @param string $value
+	 * @param string $configuration
+	 * @return boolean
+	 */
+	private function validateDateRange($value, $configuration) {
+				
+		$date = strtotime(trim($value));
+		$dateRange = GeneralUtility::trimExplode(',', $configuration, TRUE);
+		
+		if (count($dateRange) == 0) {
+			return TRUE;
+		}
+				
+		if (!isset($dateRange[1])) {
+				if (strtotime($dateRange[0]) < time()) {
+					$dateRange[1] = 'now';
+				} else {
+					$dateRange[1] = $dateRange[0];
+					$dateRange[0] = 'now';
+				}
+		}
+		
+		$minDate = strtotime($dateRange[0]);
+		$maxDate = strtotime($dateRange[1]);
+
+		if ($date >= $minDate && $date <= $maxDate) {
+			return TRUE;
+		}
+		return FALSE;
+	}
 	
 	/**
 	 * validateIBAN
 	 *
-	 * @param \WorldDirect\Powermailext\Domain\Model\Field $field
+	 * @param string $value
+	 * @param string $configuration
 	 * @return boolean
 	 */
-	private function validateIBAN(\WorldDirect\Powermailext\Domain\Model\Field $field, $value) {
+	private function validateIBAN($value, $configuration) {
 		$countries = $this->countryRepository->findAll()->toArray();
 		$countryCodes = array_map(function($country) { return strtoupper($country->getIsoCodeA2()); }, $countries);
 		$characterMap = array(
@@ -101,36 +130,5 @@ class DynamicValidator extends \WorldDirect\Powermailext\Domain\Validator\InputV
 	 	$IBANcheck = strtr($IBANcheck, $characterMap);	 	
 	 	return bcmod($IBANcheck, 97) == 1;
 	}
-	
-	
-	/**
-	 *
-	 * validateBirthdate
-	 *
-	 * @param \WorldDirect\Powermailext\Domain\Model\Field $field
-	 * @return boolean
-	 */
-	private function validateBirthdate(\WorldDirect\Powermailext\Domain\Model\Field $field, $value) {
-		$birthDate = strtotime(trim($value));
-		$minBirthDate = strtotime('-100 years');
-		$maxBirthDate = strtotime('-18 years');
-		return ($birthDate >= $minBirthDate && $birthDate <= $maxBirthDate);
-	}
-	
-	/**
-	 *
-	 * validateRegistrationdate
-	 *
-	 * @param \WorldDirect\Powermailext\Domain\Model\Field $field
-	 * @return boolean
-	 */
-	private function validateRegistrationdate(\WorldDirect\Powermailext\Domain\Model\Field $field, $value) {
-		$registrationDate = strtotime(trim($value));
-		$minRegDate = strtotime('-1 years');
-		$maxRegDate = strtotime('+1 years');
-		return ($registrationDate >= $minRegDate && $registrationDate <= $maxRegDate);
-	}
-	
-	
 }
 ?>

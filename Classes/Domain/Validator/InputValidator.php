@@ -4,6 +4,15 @@ namespace WorldDirect\Powermailext\Domain\Validator;
 class InputValidator extends \In2code\Powermail\Domain\Validator\InputValidator {
 		
 	/**
+	 * @var array
+	 */
+	protected $validationFieldTypes = array(
+		'input',
+		'textarea',
+		'date'
+	);	
+	
+	/**
 	 * Validation of given Params
 	 *
 	 * @param \In2code\Powermail\Domain\Model\Mail $mail
@@ -41,13 +50,12 @@ class InputValidator extends \In2code\Powermail\Domain\Validator\InputValidator 
 	 * @return \string Answer value
 	 */
 	protected function getAnswerFromField($field, $mail) {
-		$theAnswer = '';
 		foreach ($mail->getAnswers() as $answer) {
 			if ($answer->getField()->getUid() == $field->getUid()) {
-				$theAnswer = $answer->getValue();
+				return $answer->getValue();
 			}
 		}
-		return $theAnswer;
+		return '';
 	}
 	
 	/**

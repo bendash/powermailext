@@ -128,13 +128,16 @@ $GLOBALS['TCA']['tx_powermail_domain_model_fields']['palettes'][$dependencyPalet
 	'showitem' => 'tx_powermailext_dependency, tx_powermailext_dependency_field, tx_powermailext_dependency_operator, tx_powermailext_dependency_value, --linebreak--, tx_powermailext_dependency_action'
 );
 
+// add the fields to all types for the powermail fields table
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', '--palette--;LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.clf:tx_powermailext_domain_model_field.attributes;'.$additionalAttributesPaletteIndex, '', 'before:mandatory');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', '--palette--;LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.clf:tx_powermailext_domain_model_field.dependency;'.$dependencyPaletteIndex, '', 'before:mandatory');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', 'tx_extbase_type');
+
 // required for extending the model
 // we cant't use this since powermail 2.4 uses a different TCA type for every field type
 // $GLOBALS['TCA']['tx_powermail_domain_model_fields']['ctrl']['type'] = 'tx_extbase_type';
 // reload TCA form if dependency is activated
 $GLOBALS['TCA']['tx_powermail_domain_model_fields']['ctrl']['requestUpdate'] .= ',tx_powermailext_dependency';
-// add the fields to all types for the powermail fields table
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', '--palette--;LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.clf:tx_powermailext_domain_model_field.attributes;'.$additionalAttributesPaletteIndex, '', 'before:mandatory');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', '--palette--;LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.clf:tx_powermailext_domain_model_field.dependency;'.$dependencyPaletteIndex, '', 'before:mandatory');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', 'tx_extbase_type');
+// show same fields for date as for input
+$GLOBALS['TCA']['tx_powermail_domain_model_fields']['palettes']['21']['showitem'] = $GLOBALS['TCA']['tx_powermail_domain_model_fields']['palettes']['2']['showitem'];
