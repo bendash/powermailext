@@ -134,6 +134,7 @@ let's say the current date is *May, 25th 2015*, then
 | -8 months                | validates a date between Aug, 25th 2014 and May, 25th 2015 |
 | +12 days                 | a date between May, 25th 2015 and June, 6th 2015           |
 
+![Screenshot from Date Range Validation in Backend](Documentation/Images/daterange_validation.jpg "Date Range Validation")
 
 ### Correct Text Answers ###
 
