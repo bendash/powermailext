@@ -5,8 +5,9 @@ This Extension was developed to add some functionality powermail.
 
 ## Features ##
 
-  - Additional HTML Tag Attributes (maxlength, disabled, readonly) for Input/Select Fields
   - Dependencies for Fields of other Fields: Conditional Validation and Display
+  - Additional HTML Tag Attributes (maxlength, disabled, readonly) for Input/Select Fields
+  - Additional Validators (Date Range, IBAN)
   - Viewhelper for correct Text Answer in Confirmation View for Radiobuttons and Checkboxes
 
 ## Installing ##
@@ -116,6 +117,23 @@ Partials/Form/FIELDNAME.html
 ```
 additionalAttributes="{pmext:Validation.ValidationDataAndAttributes(field:field, iteration:index)}
 ````
+
+### Additional Validators ###
+
+The Extension offers two additional Validators:
+   - IBAN
+   - Date Range
+
+	This Validator is for the type 'date'. It is possible to validate a date input against a given date range. The date range can be inserted in the 'validation configuration' input. Possible values are strings that can be parsed by PHP's strtotime() function. The validation configuration consists at least of one, but share a maximum of two arguments, seperated by a comma. This two parts represent the limits for the date. If only one argument is given, the validator automatically adds 'now' as the second argument, if the result of strtotime of the given argument is less than the current timestamp. Otherwise the second argument 'now' will be inserted before the given argument. See this examples of date ranges for better understanding:  
+let's say the current date is *May, 25th 2015*, then
+
+| validation configuration | resulting validation                                       |
+|--------------------------|------------------------------------------------------------|
+| -100 years, -18 years    | validates a date between May, 25th 1915 and May, 25th 1997 |
+| -3 months, + 3 days      | validates a date between Feb, 25 2015 and May, 28th 2015   |
+| -8 months                | validates a date between Aug, 25th 2014 and May, 25th 2015 |
+| +12 days                 | a date between May, 25th 2015 and June, 6th 2015           |
+
 
 ### Correct Text Answers ###
 
