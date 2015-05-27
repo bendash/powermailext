@@ -19,16 +19,18 @@ class ValidationDataAndAttributesViewHelper extends \In2code\Powermail\ViewHelpe
 	 * @return \array for data attributes
 	 */
 	public function render(\In2code\Powermail\Domain\Model\Field $field, $additionalAttributes = array(), $iteration = NULL) {
-		$dataArray = $additionalAttributes;
-		$this->extensionName = $this->controllerContext->getRequest()->getControllerExtensionName();
-		if ($this->arguments['extensionName'] !== NULL) {
-			$this->extensionName = $this->arguments['extensionName'];
+		switch ($field->getType()) {
+			case 'check':
+				// multiple field radiobuttons
+			case 'radio':
+				$this->addMandatoryAttributesForMultipleFields($additionalAttributes, $field, $iteration);
+				break;
+			default:
+				$this->addMandatoryAttributes($additionalAttributes, $field);
 		}
-
-		$this->addAttributes($dataArray, $field);
-		$this->addMandatoryAttributes($dataArray, $field, $iteration);
-		$this->addValidationAttributes($dataArray, $field);
-		return $dataArray;
+		$this->addAttributes($additionalAttributes, $field);
+		$this->addValidationAttributes($additionalAttributes, $field);
+		return $additionalAttributes;
 	}
 	
 	/**
