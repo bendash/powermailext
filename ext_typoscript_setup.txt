@@ -11,10 +11,10 @@ config.tx_extbase {
 		}
 	}
 	persistence {
-        classes {
-            WorldDirect\Powermailext\Domain\Model\Field {
-                mapping {
-                    tableName = tx_powermail_domain_model_fields
+		classes {
+			WorldDirect\Powermailext\Domain\Model\Field {
+				mapping {
+					tableName = tx_powermail_domain_model_fields
 					recordType = Tx_Powermailext_Domain_Model_Field
 					columns {
 						tx_powermailext_disabled.mapOnProperty = disabled
@@ -26,8 +26,8 @@ config.tx_extbase {
 						tx_powermailext_dependency_value.mapOnProperty = dependencyValue
 						tx_powermailext_dependency_action.mapOnProperty = dependencyAction
 					}
-                }
-            }  
-    	}
-    }
+				}
+			}  
+		}
+  }
 }

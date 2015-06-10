@@ -3,7 +3,7 @@ namespace WorldDirect\Powermailext\Domain\Validator;
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class DynamicValidator extends \WorldDirect\Powermailext\Domain\Validator\InputValidator {
+class ExtendedValidator extends \WorldDirect\Powermailext\Domain\Validator\InputValidator {
 	
 	/**
 	 * countryRepository
@@ -14,30 +14,34 @@ class DynamicValidator extends \WorldDirect\Powermailext\Domain\Validator\InputV
 	protected $countryRepository;
 	
 	/**
-	 * validate
+	 * doAdditionalValidation
 	 *
 	 * @param \In2code\Powermail\Domain\Model\Mail $mail
 	 * @param \In2code\Powermail\Domain\Validator\CustomValidator $pObj
 	 */
-	public function validate($mail, $pObj) {
-		if(isset($mail)) {
-			foreach ($mail->getAnswers() as $answer) {
-				$field = $answer->getField();
-				switch ($field->getValidation()) {
-					// Date Range
-					case 100:
-						if(!$this->validateDateRange($answer->getValue(), $field->getValidationConfiguration())) {
-							$pObj->setIsValid(FALSE);
-							$pObj->addError('Kein gültiges Datum angegeben!', $field->getMarker());
+	public function doAdditionalValidation($mail, $pObj) {
+		foreach ($mail->getForm()->getPages() as $page) {
+			foreach ($page->getFields() as $field) {
+				$answer = $this->getAnswerFromField($field, $mail);
+				if ($this->fieldShouldBeValidated($field, $mail)) {
+					switch ($field->getValidation()) {
+						// Date Range
+						case 100:
+							if(!$this->validateDateRange($answer, $field->getValidationConfiguration())) {
+								$pObj->setIsValid(FALSE);
+								$pObj->addError('Kein gültiges Datum angegeben!', $field->getMarker());
+							}
+							break;
+						// IBAN
+						case 101:
+							if(!$this->validateIBAN($answer, $field->getValidationConfiguration())) {
+								$pObj->setIsValid(FALSE);
+								$pObj->addError('Kein gültiger IBAN eingegeben!', $field->getMarker());
+							}
+							break;
 						}
-						break;
-					// IBAN
-					case 101:
-						if(!$this->validateIBAN($answer->getValue(), $field->getValidationConfiguration())) {
-							$pObj->setIsValid(FALSE);
-							$pObj->addError('Kein gültiger IBAN eingegeben!', $field->getMarker());
-						}
-						break;				
+				} else {
+					continue;
 				}
 			}
 		}

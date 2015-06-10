@@ -18,7 +18,7 @@ class InputValidator extends \In2code\Powermail\Domain\Validator\InputValidator 
 	 * @param \In2code\Powermail\Domain\Model\Mail $mail
 	 * @return bool
 	 */
-	public function isValid($mail) {
+	public function isValid($mail) {		
 		// stop validation if it's turned off
 		if (!$this->isServerValidationEnabled()) {
 			return TRUE;
@@ -63,37 +63,47 @@ class InputValidator extends \In2code\Powermail\Domain\Validator\InputValidator 
 	 *
 	 * @param \WorldDirect\Powermailext\Domain\Model\Field $field
 	 * @param \In2code\Powermail\Domain\Model\Mail $mail
+	 *
+	 * @return bool
 	 */
 	public function fieldShouldBeValidated($field, $mail) {
 		if ($field->getDependency() && $field->getDependencyAction() % 3 == 0) {
 			$theAnswer = $this->getAnswerFromField($field->getDependencyField(), $mail);
-			if (is_array($theAnswer))
+			if (is_array($theAnswer)) {
 				$theAnswer = join('', $theAnswer);
+			}
 			switch ($field->getDependencyOperator()) {
 				// not empty
 				case 1:
-					if (!empty($theAnswer))
+					if (!empty($theAnswer)) {
 						return TRUE;
+					}
 					break;
 				// equal
 				case 2:
-					if ($theAnswer == $field->getDependencyValue())
+					if ($theAnswer == $field->getDependencyValue()) {
 						return TRUE;
+					}
 					break;
 				// greater than
 				case 3:
-					if ($theAnswer > $field->getDependencyValue())
+					if ($theAnswer > $field->getDependencyValue()) {
 						return TRUE;
+					}
 					break;
 				// less than (integer)
 				case 4:
-					if ($theAnswer < $field->getDependencyValue())
+					if ($theAnswer < $field->getDependencyValue()) {
 						return TRUE;
+					}
 					break;
 				// contains (for multiple checkboxes)
 				case 5:
-					if (strpos($theAnswer, $field->getDependencyValue()) !== FALSE)
+					if (strpos($theAnswer, $field->getDependencyValue()) !== FALSE) {
 						return TRUE;
+					}
+					break;
+				default:
 					break;
 			}
 			return FALSE;
