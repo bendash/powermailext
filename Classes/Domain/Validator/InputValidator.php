@@ -39,7 +39,7 @@ class InputValidator extends \In2code\Powermail\Domain\Validator\InputValidator 
 			}
 		}
 
-		return $this->getIsValid();
+		return $this->isValidState();
 	}
 
 	/**

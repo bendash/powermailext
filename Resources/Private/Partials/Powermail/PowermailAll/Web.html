@@ -6,10 +6,11 @@
 	Answer: {answer}
 </f:comment>
 
-
-<dt class="powermail_all_label powermail_all_label_{answer.field.marker}">
-	<vh:string.RawAndRemoveXss>{answer.field.title}</vh:string.RawAndRemoveXss>
-</dt>
-<dd class="powermail_all_value powermail_all_value_{answer.field.marker}">
-	<pmext:Misc.CorrectTextAnswer answer="{answer}" />
-</dd>
+<vh:string.RawAndRemoveXss>
+	<dt class="powermail_all_label powermail_all_type_{answer.field.type} powermail_all_marker_{answer.field.marker}">
+		{answer.field.title}
+	</dt>
+	<dd class="powermail_all_value powermail_all_type_{answer.field.type} powermail_all_marker_{answer.field.marker}">
+		<pmext:Misc.CorrectTextAnswer answer="{answer}" />
+	</dd>
+</vh:string.RawAndRemoveXss>
