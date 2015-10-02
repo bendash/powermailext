@@ -1,6 +1,5 @@
 <?php
 namespace WorldDirect\Powermailext\ViewHelpers\Misc;
-
 /**
  * Returns Data-Attributes for JS and Native Validation
  *
@@ -9,7 +8,6 @@ namespace WorldDirect\Powermailext\ViewHelpers\Misc;
  * @version
  */
 class CorrectTextAnswerViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
-
 	/**
 	 * Returns Data Attribute Array Datepicker settings (FE + BE)
 	 *
@@ -18,7 +16,6 @@ class CorrectTextAnswerViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstr
 	 * @return \array for data attributes
 	 */
 	public function render(\In2code\Powermail\Domain\Model\Answer $answer = NULL) {
-
 		$textAnswer = '';
 		
 		if($answer) {
@@ -38,7 +35,7 @@ class CorrectTextAnswerViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstr
 							if ($possibleAnswer['value'] == $value)
 							$textAnswer .= $possibleAnswer['label'];
 						}
-						if($i == (count($possibleAnswers)-1))
+						if($i != (count($answerValue)-1))
 							$textAnswer .= ', ';
 						$i++;
 					}

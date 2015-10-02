@@ -28,14 +28,14 @@ class ExtendedValidator extends \WorldDirect\Powermailext\Domain\Validator\Input
 						// Date Range
 						case 100:
 							if(!$this->validateDateRange($answer, $field->getValidationConfiguration())) {
-								$pObj->setIsValid(FALSE);
+								$pObj->setValidState(FALSE);
 								$pObj->addError('Kein gültiges Datum angegeben!', $field->getMarker());
 							}
 							break;
 						// IBAN
 						case 101:
 							if(!$this->validateIBAN($answer, $field->getValidationConfiguration())) {
-								$pObj->setIsValid(FALSE);
+								$pObj->setValidState(FALSE);
 								$pObj->addError('Kein gültiger IBAN eingegeben!', $field->getMarker());
 							}
 							break;
