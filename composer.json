@@ -4,7 +4,7 @@
 	"description": "This Extension was developed to add some functionality powermail. Features: Dependencies for Fields of other Fields: Conditional Validation and Display, Additional Validators (Date Range, IBAN), Additional HTML Tag Attributes (maxlength, disabled, readonly) for Input/Select Fields, Viewhelper for correct Text Answer in Confirmation View for Radiobuttons and Checkboxes",
 	"homepage": "http://typo3.org",
 	"license": ["GPL-2.0+"],
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"require": {
 		"typo3/cms-core": ">=6.2.1,<8.0"
 	},
