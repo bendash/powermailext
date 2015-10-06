@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * jQuery dependency plugin
  *
@@ -30,10 +28,27 @@
  */
 
 (function($) {
+	'use strict';
+	function resetField(fieldName) {
+	try {
+		var $field = jQuery('[name="'+fieldName+'"]');
+		if (jQuery.inArray($field.prop('type'), ['radio', 'checkbox']) > -1) {
+			$field.each(function() {
+				//jQuery(this).prop('checked', false).trigger('change');
+			});
+			$field.first().trigger('change');
+		} else if ($field.prop('tagName').toLowerCase() == 'select') {
+			//$field.children().removeAttr('selected').trigger('change');
+		} else {
+			$field.val('').trigger('change');
+		}
+	} catch(e) {}
+}
+	
 	
 	jQuery.fn.dependency = function() {
 			
-		var $dependentFields = $(this).find('[data-depends-on]');
+		var $dependentFields = jQuery(this).find('[data-depends-on]');
 		var dependentTriggers = {};
 		$dependentFields.each(function(index, field) {
 			dependentTriggers[$(field).data('depends-on').toLowerCase().replace(/^A-Za-z0-9\-_/g, '')] = true;
@@ -62,7 +77,7 @@
 									changedVal = Array();
 									invertResult = !$triggerFields.filter(':checked').length > 1;
 									$triggerFields.filter(':checked').each(function() {
-										changedVal.push($(this).val());
+										changedVal.push(jQuery(this).val());
 									});
 								}
 								break;
@@ -141,21 +156,3 @@
 	}
 	
 } (jQuery));
-	
-function resetField(fieldName) {
-	try {
-		var $field = jQuery('[name="'+fieldName+'"]');
-		if (jQuery.inArray($field.prop('type'), ['radio', 'checkbox']) > -1) {
-			$field.each(function() {
-				//jQuery(this).prop('checked', false).trigger('change');
-			});
-			$field.first().trigger('change');
-		} else if ($field.prop('tagName').toLowerCase() == 'select') {
-			//$field.children().removeAttr('selected').trigger('change');
-		} else {
-			$field.val('').trigger('change');
-		}
-	} catch(e) {}
-}
-
-

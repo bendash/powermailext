@@ -14,7 +14,7 @@ page {
 	# TYPO3 6.2
 	inlineJS {
 		482 = TEXT
-		482.value = $(function() { $('form').dependency(); });
+		482.value = jQuery(function() { jQuery('form').dependency(); });
 	}
 	# TYPO3 7 and newer
 	jsInline < .inlineJS
