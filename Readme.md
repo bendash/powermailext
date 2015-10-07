@@ -37,7 +37,7 @@ With this Feature it is possible to:
  -  only validate fields (client and server side) if a other field meets a specific requirement.
  -  show / hide fields in the form if a other field meets a specific requirement.
 
-In Backend, you can define your validation condition for a powermail field. After activating the conditional validation, three new fields appear:
+In Backend, you can define your validation condition for a powermail field. After activating the conditional validation, four new fields appear:
   - Field (the field from which the current depends on)
   - Operator (the operator which will be used for comparison)
   - Value (the value which will be compared with the field value of 'Field')
@@ -48,8 +48,9 @@ In Backend, you can define your validation condition for a powermail field. Afte
 #### Javascript Visibility Handling ####
 
 Powermailext toggles the visibility of form fields in the Frontend with Javascript.
+It makes use of a small jQuery Plugin. Therefore, it is required to have the jQuery JavaScript Library included in your Frontend.
 
-There is a View Helper which takes care of correct rendering of dependency information for Javascript called 'ContainerDataAttributes' View Helper. Make sure you use this View Helper at the html container element which holds the input field if you use your own Templates/Partials
+There is a View Helper which takes care of correct rendering of dependency information for JavaScript called 'ContainerDataAttributes' View Helper. Make sure you use this View Helper at the html container element which holds the input field if you use your own Templates/Partials.
 
 Partials/Form/FIELDNAME.html
 ```
@@ -64,9 +65,9 @@ Partials/Form/FIELDNAME.html
 If you want to perform further actions with a field immediately after a visibility change, you can listen for this event in Javascript: (here using jQuery)
 
 ```
-// event "pmext.visibility.change"
+// event "dependency.change"
 
-$('input, select').on('pmext.visibility.change', function(event) {
+$('input, select').on('dependency.change', function(event) {
 	// do something (access the field using event.target or this)
 });
 
@@ -74,35 +75,12 @@ $('input, select').on('pmext.visibility.change', function(event) {
 
 which will be triggered on the affected field (the input or select tag)
 
-#### Example ####
+### Client Side Validation using JavaScript ###
 
-For example, you want to display the field 'customer id' only if the user checks the box 'I am already customer', and display different further options when checked a specific radio button.
-
-To achieve the above example, you need the following fields in your form
-  * Checkboxes (I am already customer)
-  * Input (Customer ID)
-  * Radio (Choose Brand)
-  * Checkboxes (Audi)
-  * Checkboxes (BMW)
-
-This will generate a form like this in the Frontend (unstyled)
-
-![Screenshot from Form in Frontend](Documentation/Images/form.jpg "Form in Frontend")
-
-
-Add a Label and a value (the use of integer 1 as checkbox value for enabling/disabling checkbox has proven to be..) to the checkbox and activate the conditional validation of the input field.
-Select the checkbox in the select box, use 'equal' as operator and insert '1' as value. For the action choose 'toggle visibility and validation'. This will cause the field to change its visibility if the checkbox is checked. Additionally, the field will only be validated if the checkbox is checked. If you want only the one feature or the other, you can easily change it in the backend via setting the action to an other option.
-
-![Screenshot of checkbox trigger field in Backend](Documentation/Images/form_be_triggerfield.jpg "Trigger Field 'I am already Customer'")
-
-![Screenshot of dependent input field in Backend](Documentation/Images/form_be_dependentfield.jpg "Dependent Field 'Customer ID'")
-
-Add the values '1' and '2' to the Radio Buttons 'Choose Brand'.
-Also activate the validation condition for both checkboxes fields (Audi and BMW) and configure them like the checkbox above, use '1' as comparison value at Audi Checkboxes and '2' at BMW.
-When you check your form in the frontend, you will notice that the 'Customer ID' input and 'Audi'/'BMW' checkboxes are hidden if the specific checkbox/radio is not checked. Check the checkbox to toggle the visibility of the input field. In this Screenshot also the option for the choosing of car models depends on the selection of the brand.
-
-![Screenshot of form with checked checkbox in Frontend](Documentation/Images/form_checked.jpg "Form in Frontend after user action")
-
+When a form does use a JavaScript Plugin to validate its fields instead of native HTML5 validation (modern browsers),
+you have to make sure that only fields will be validated, which are not hidden.
+Fields which are hidden because of any dependency hold the class 'dependency-novalidate'.
+Your validator should be configured properly to not validate form fields which hold this class.
 
 ### Additional Attributes ###
 
@@ -161,3 +139,32 @@ instead of
 ```
 
 This View Helper also takes care of array handling and nested Answers.
+
+## Example ##
+
+For example, you want to display the field 'customer id' only if the user checks the box 'I am already customer', and display different further options when checked a specific radio button.
+
+To achieve the above example, you need the following fields in your form
+  * Checkboxes (I am already customer)
+  * Input (Customer ID)
+  * Radio (Choose Brand)
+  * Checkboxes (Audi)
+  * Checkboxes (BMW)
+
+This will generate a form like this in the Frontend (unstyled)
+
+![Screenshot from Form in Frontend](Documentation/Images/form.jpg "Form in Frontend")
+
+
+Add a Label and a value (the use of integer 1 as checkbox value for enabling/disabling checkbox has proven to be..) to the checkbox and activate the conditional validation of the input field.
+Select the checkbox in the select box, use 'equal' as operator and insert '1' as value. For the action choose 'toggle visibility and validation'. This will cause the field to change its visibility if the checkbox is checked. Additionally, the field will only be validated if the checkbox is checked. If you want only the one feature or the other, you can easily change it in the backend via setting the action to an other option.
+
+![Screenshot of checkbox trigger field in Backend](Documentation/Images/form_be_triggerfield.jpg "Trigger Field 'I am already Customer'")
+
+![Screenshot of dependent input field in Backend](Documentation/Images/form_be_dependentfield.jpg "Dependent Field 'Customer ID'")
+
+Add the values '1' and '2' to the Radio Buttons 'Choose Brand'.
+Also activate the validation condition for both checkboxes fields (Audi and BMW) and configure them like the checkbox above, use '1' as comparison value at Audi Checkboxes and '2' at BMW.
+When you check your form in the frontend, you will notice that the 'Customer ID' input and 'Audi'/'BMW' checkboxes are hidden if the specific checkbox/radio is not checked. Check the checkbox to toggle the visibility of the input field. In this Screenshot also the option for the choosing of car models depends on the selection of the brand.
+
+![Screenshot of form with checked checkbox in Frontend](Documentation/Images/form_checked.jpg "Form in Frontend after user action")
