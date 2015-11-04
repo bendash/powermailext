@@ -1,4 +1,5 @@
 {namespace vh=In2code\Powermail\ViewHelpers}
+{namespace pmext=WorldDirect\Powermailext\ViewHelpers}
 
 		<f:comment>
 			{vh:Form.Countries()} will try to get the country list from the extension static_info_tables (and _de, _fr etc...)
@@ -6,7 +7,7 @@
 			If you want to change sorting, Value or Label, please install static_info_tables
 		</f:comment>
 
-<div id="powermail_fieldwrap_{field.uid}" class="powermail_fieldwrap powermail_fieldwrap_country powermail_fieldwrap_{field.uid} {field.css}">
+<div id="powermail_fieldwrap_{field.uid}" class="powermail_fieldwrap powermail_fieldwrap_country powermail_fieldwrap_{field.uid} {field.css}" {pmext:Validation.ContainerDataAttributes(field:field)}>
 	<label for="powermail_field_{field.marker}" class="powermail_label" title="{field.description}">
 		<vh:string.RawAndRemoveXss>{field.title}</vh:string.RawAndRemoveXss><f:if condition="{field.mandatory}"><span class="mandatory">*</span></f:if>
 	</label>

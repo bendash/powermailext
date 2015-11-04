@@ -59,7 +59,7 @@ class Field extends \In2Code\Powermail\Domain\Model\Field {
 	/**
 	 * dependency
 	 *
-	 * @var integer
+	 * @var boolean
 	 */
 	protected $dependency;
 
@@ -90,6 +90,13 @@ class Field extends \In2Code\Powermail\Domain\Model\Field {
 	 * @var integer
 	 */
 	protected $dependencyAction;
+	
+	/**
+	 * dependencyResetField
+	 *
+	 * @var integer
+	 */
+	protected $dependencyResetField;
 	
 	/**
 	 * @param integer $maxlength
@@ -137,7 +144,7 @@ class Field extends \In2Code\Powermail\Domain\Model\Field {
 	}
 
 	/**
-	 * @param string $dependency
+	 * @param boolean $dependency
 	 * @return void
 	 */
 	public function setDependency($dependency) {
@@ -145,7 +152,7 @@ class Field extends \In2Code\Powermail\Domain\Model\Field {
 	}
 
 	/**
-	 * @return integer
+	 * @return boolean
 	 */
 	public function getDependency() {
 		return $this->dependency;
@@ -209,6 +216,21 @@ class Field extends \In2Code\Powermail\Domain\Model\Field {
 	 */
 	public function getDependencyAction() {
 		return $this->dependencyAction;
+	}
+	
+	/**
+	 * @param integer $dependencyResetField
+	 * @return void
+	 */
+	public function setDependencyResetField($dependencyResetField) {
+		$this->dependencyResetField = $dependencyResetField;
+	}
+
+	/**
+	 * @return integer
+	 */
+	public function getDependencyResetField() {
+		return $this->dependencyResetField;
 	}
 
 }

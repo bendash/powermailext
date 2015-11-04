@@ -51,7 +51,7 @@ $tempColumns = array(
 				array('LLL:EXT:powermail/Resources/Private/Language/locallang_db.xlf:pleaseChoose', 0)
 			),
 			'foreign_table' => 'tx_powermail_domain_model_fields',
-			'foreign_table_where' => 'AND tx_powermail_domain_model_fields.pages = ###REC_FIELD_pages### AND tx_powermail_domain_model_fields.uid <> ###THIS_UID###',
+			'foreign_table_where' => 'AND tx_powermail_domain_model_fields.pages IN (SELECT uid FROM tx_powermail_domain_model_pages WHERE tx_powermail_domain_model_pages.forms = (SELECT forms FROM tx_powermail_domain_model_pages WHERE tx_powermail_domain_model_pages.uid = ###REC_FIELD_pages###)) AND tx_powermail_domain_model_fields.uid <> ###THIS_UID###',
 			'default' => 0,
 		),
 	),
@@ -99,6 +99,14 @@ $tempColumns = array(
 			'default' => 0,
 		),
 	),
+	'tx_powermailext_dependency_resetfield' => array(
+		'exclude' => 0,
+		'label' => 'LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.tx_powermailext_dependency_resetfield',
+		'config' => array(
+			'type' => 'check',
+			'default' => 0,
+		),
+	),
 	'tx_extbase_type' => array(
 		'exclude' => 0,
 		'config' => array(
@@ -125,12 +133,12 @@ $GLOBALS['TCA']['tx_powermail_domain_model_fields']['palettes'][$additionalAttri
 $dependencyPaletteIndex = $additionalAttributesPaletteIndex + 1;
 $GLOBALS['TCA']['tx_powermail_domain_model_fields']['palettes'][$dependencyPaletteIndex] = array(
 	'canNotCollapse' => 1,
-	'showitem' => 'tx_powermailext_dependency, tx_powermailext_dependency_field, tx_powermailext_dependency_operator, tx_powermailext_dependency_value, --linebreak--, tx_powermailext_dependency_action'
+	'showitem' => 'tx_powermailext_dependency, tx_powermailext_dependency_field, tx_powermailext_dependency_operator, tx_powermailext_dependency_value, --linebreak--, tx_powermailext_dependency_action, tx_powermailext_dependency_resetfield'
 );
 
 // add the fields to all types for the powermail fields table
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', '--palette--;LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.clf:tx_powermailext_domain_model_field.attributes;'.$additionalAttributesPaletteIndex, '', 'before:mandatory');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', '--palette--;LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.clf:tx_powermailext_domain_model_field.dependency;'.$dependencyPaletteIndex, '', 'before:mandatory');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', '--div--;LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.xlf:tx_powermailext_domain_model_field.dependency,--palette--;LLL:EXT:powermailext/Resources/Private/Language/locallang_tca.clf:tx_powermailext_domain_model_field.dependency;'.$dependencyPaletteIndex, '', 'after:own_marker_select');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tx_powermail_domain_model_fields', 'tx_extbase_type');
 
 // required for extending the model

@@ -66,6 +66,9 @@
 			<trans-unit id="tx_powermailext_domain_model_field.dependency_action.5">
 				<source>validation</source>
 			</trans-unit>
+			<trans-unit id="tx_powermailext_domain_model_field.tx_powermailext_dependency_resetfield">
+				<source>reset field on false dependency</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -10,5 +10,6 @@ CREATE TABLE tx_powermail_domain_model_fields (
 	tx_powermailext_dependency_operator tinyint(4) DEFAULT '0' NOT NULL,
 	tx_powermailext_dependency_value varchar(255) DEFAULT '' NOT NULL,
 	tx_powermailext_dependency_action tinyint(4) DEFAULT '0' NOT NULL,
+	tx_powermailext_dependency_resetfield tinyint(4) DEFAULT '0' NOT NULL,
 	tx_extbase_type VARCHAR(255) DEFAULT 'Tx_Powermailext_Domain_Model_Field' NOT NULL,
 );

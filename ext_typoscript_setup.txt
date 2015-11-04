@@ -25,6 +25,7 @@ config.tx_extbase {
 						tx_powermailext_dependency_operator.mapOnProperty = dependencyOperator
 						tx_powermailext_dependency_value.mapOnProperty = dependencyValue
 						tx_powermailext_dependency_action.mapOnProperty = dependencyAction
+						tx_powermailext_dependency_resetfield.mapOnProperty = dependencyResetField
 					}
 				}
 			}  

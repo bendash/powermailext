@@ -34,11 +34,13 @@
 		var $field = jQuery('[name="'+fieldName+'"]');
 		if (jQuery.inArray($field.prop('type'), ['radio', 'checkbox']) > -1) {
 			$field.each(function() {
-				//jQuery(this).prop('checked', false).trigger('change');
+				jQuery(this).prop('checked', false).trigger('change');
 			});
 			$field.first().trigger('change');
+			return;
 		} else if ($field.prop('tagName').toLowerCase() == 'select') {
-			//$field.children().removeAttr('selected').trigger('change');
+			$field.children().removeAttr('selected').trigger('change');
+			return;
 		} else {
 			$field.val('').trigger('change');
 		}
@@ -120,8 +122,9 @@
 								dependencyIsTrue = changedVal == '';
 								break;
 						}
-						if (invertResult)
+						if (invertResult) {
 							dependencyIsTrue = !dependencyIsTrue;
+						}
 						if(dependencyIsTrue) {
 							if (toggleVisibility) {
 								jQuery(this).show();
@@ -140,16 +143,15 @@
 								jQuery(this).find('input, select').attr('disabled', 'disabled');
 							}
 							jQuery(this).find('input, select').addClass('dependency-novalidate').trigger('dependency.change');
+							if (jQuery(this).data('depends-on-reset') == 1) {
+								jQuery(this).find('input, select').each(function(index, el) {
+									resetField(jQuery(this).attr('name'));
+								});
+							}
 						}
 					}
 				});
 			}).trigger('dependency.init');
-		});
-		
-		jQuery(this).find('select, input').on('dependency.change', function() {
-			if(jQuery(this).closest('[data-depends-on-action]').data('depends-on-action') <= 3) {
-					resetField(jQuery(this).attr('name'));
-			}
 		});
 		
 		return this;

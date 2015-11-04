@@ -20,7 +20,7 @@ class ContainerDataAttributesViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper
 	public function render(\In2code\Powermail\Domain\Model\Field $field = NULL) {
 				
 		if($field && $field->getDependency() && $field->getDependencyField()) {
-			return 'data-depends-on="'.$field->getDependencyField()->getMarker().'" data-depends-on-operator="'.$field->getDependencyOperator().'" data-depends-on-value="'.$field->getDependencyValue().'" data-depends-on-action="'.$field->getDependencyAction().'"';
+			return 'data-depends-on="'.$field->getDependencyField()->getMarker().'" data-depends-on-operator="'.$field->getDependencyOperator().'" data-depends-on-value="'.$field->getDependencyValue().'" data-depends-on-action="'.$field->getDependencyAction().'" data-depends-on-reset="'.$field->getDependencyResetField().'"';
 		}
 		
 		return '';

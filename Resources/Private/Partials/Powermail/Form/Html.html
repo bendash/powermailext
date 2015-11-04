@@ -1,4 +1,5 @@
 {namespace vh=In2code\Powermail\ViewHelpers}
+{namespace pmext=WorldDirect\Powermailext\ViewHelpers}
 
 	<f:comment>
 		Per default the HTML-Output is parsed through a removeXSS function for security reasons.
@@ -6,7 +7,7 @@
 			plugin.tx_powermail.settings.setup.misc.disableRemoveXss = 1
 	</f:comment>
 
-<div id="powermail_fieldwrap_{field.uid}" class="powermail_fieldwrap powermail_fieldwrap_html powermail_fieldwrap_{field.uid} {field.css}">
+<div id="powermail_fieldwrap_{field.uid}" class="powermail_fieldwrap powermail_fieldwrap_html powermail_fieldwrap_{field.uid} {field.css}" {pmext:Validation.ContainerDataAttributes(field:field)}>
 	<f:if condition="{settings.misc.disableRemoveXss}">
 		<f:then>
 			<f:format.raw>{field.text}</f:format.raw>
