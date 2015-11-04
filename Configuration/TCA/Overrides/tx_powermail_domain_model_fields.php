@@ -141,3 +141,4 @@ $GLOBALS['TCA']['tx_powermail_domain_model_fields']['ctrl']['requestUpdate'] .= 
 
 // show same fields for date as for input
 $GLOBALS['TCA']['tx_powermail_domain_model_fields']['types']['date']['showitem'] = str_replace('--palette--;Layout;43','--palette--;Layout;42',$GLOBALS['TCA']['tx_powermail_domain_model_fields']['types']['input']['showitem']);
+$GLOBALS['TCA']['tx_powermail_domain_model_fields']['types']['typoscript']['showitem'] = str_replace('--palette--;Layout;43','--palette--;Layout;42',$GLOBALS['TCA']['tx_powermail_domain_model_fields']['types']['input']['showitem']);
