@@ -39,6 +39,13 @@ class ExtendedValidator extends \WorldDirect\Powermailext\Domain\Validator\Input
 								$pObj->addError('Kein gültiger IBAN eingegeben!', $field->getMarker());
 							}
 							break;
+						// Name validation
+						case 102:
+							if (!$this->validateName($answer, $field->getValidationConfiguration())) {
+								$pObj->setValidState(FALSE);
+								$pObj->addError('Kein gültiger Name eingegeben!', $field->getMarker());
+							}
+							break;
 						}
 				} else {
 					continue;
@@ -133,6 +140,22 @@ class ExtendedValidator extends \WorldDirect\Powermailext\Domain\Validator\Input
 	 	$IBANcheck = $BBAN.$countryCode.$checksum;	 	
 	 	$IBANcheck = strtr($IBANcheck, $characterMap);	 	
 	 	return bcmod($IBANcheck, 97) == 1;
+	}
+	
+	/**
+	 * Validate a persons name
+	 *
+	 * @param string $value
+	 * @param string $configuration
+	 * @return boolean
+	 */
+	private function validateName($value, $configuration) {
+		$re = "/(^[a-zA-Z öäüÄÖÜ\\-]*$)/";
+		preg_match($re, $value, $matches);
+		if (sizeof($matches) > 0) {
+			return true;
+		}
+		return false;
 	}
 }
 ?>
