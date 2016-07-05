@@ -53,7 +53,7 @@
 		var $dependentFields = jQuery(this).find('[data-depends-on]');
 		var dependentTriggers = {};
 		$dependentFields.each(function(index, field) {
-			dependentTriggers[$(field).data('depends-on').toLowerCase().replace(/^A-Za-z0-9\-_/g, '')] = true;
+			dependentTriggers[$(field).data('depends-on').replace(/^A-Za-z0-9\-_/g, '')] = true;
 		});
 		
 		jQuery.each(dependentTriggers, function(triggerField, value) {
