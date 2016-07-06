@@ -66,7 +66,6 @@
 						var toggleVisibility = jQuery(this).data('depends-on-action') <= 3;
 						var toggleState = jQuery(this).data('depends-on-action') % 2 == 0;
 						var changedVal = $changedField.val();
-						changedVal = (typeof changedVal == 'undefined') ? '' : changedVal;
 						switch($changedField.prop('type').toLowerCase()) {
 							case 'radio':
 								if(!$changedField.is(':checked')) {
@@ -86,6 +85,7 @@
 							default:
 								break;
 						}
+						changedVal = (typeof changedVal == 'undefined') ? '' : changedVal;
 						switch(jQuery(this).data('depends-on-operator')) {
 							// not empty
 							case 1:
