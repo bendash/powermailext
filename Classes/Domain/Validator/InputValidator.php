@@ -97,10 +97,13 @@ class InputValidator extends \In2code\Powermail\Domain\Validator\InputValidator 
 						return TRUE;
 					}
 					break;
-				// contains (for multiple checkboxes)
+				// contains
 				case 5:
-					if (strpos($theAnswer, $field->getDependencyValue()) !== FALSE) {
-						return TRUE;
+					$tArr = explode(',', $field->getDependencyValue());
+					foreach ($tArr as $val) {
+						if (strpos($theAnswer, $val) !== FALSE) {
+							return TRUE;
+						}
 					}
 					break;
 				default:
