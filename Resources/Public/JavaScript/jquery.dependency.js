@@ -58,7 +58,7 @@
 		
 		jQuery.each(dependentTriggers, function(triggerField, value) {
 			var $triggerFields = jQuery('[name*="'+triggerField+'"]:not([type="hidden"])');
-			$triggerFields.on('change dependency.init', function(event) {
+			$triggerFields.on('change keyup dependency.init', function(event) {
 				var $changedField = jQuery(event.target);
 				$dependentFields.each(function() {			
 					if ($changedField.prop('name').indexOf(jQuery(this).data('depends-on')) > -1) {
