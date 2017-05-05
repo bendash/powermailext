@@ -7,7 +7,6 @@ This Extension was developed to add some functionality powermail.
 
   - Dependencies for Fields of other Fields: Conditional Validation and Display
   - Additional HTML Tag Attributes (maxlength, disabled, readonly) for Input/Select Fields
-  - Additional Validators (Date Range, IBAN)
   - Viewhelper for correct Text Answer in Confirmation View for Radiobuttons and Checkboxes
 
 ## Installing ##
