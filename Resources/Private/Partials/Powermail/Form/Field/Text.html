@@ -1,0 +1,7 @@
+{namespace pmext=WorldDirect\Powermailext\ViewHelpers}
+
+<div class="powermail_fieldwrap powermail_fieldwrap_type_text powermail_fieldwrap_{field.marker} {field.css} {settings.styles.framework.fieldAndLabelWrappingClasses}" {pmext:Validation.ContainerDataAttributes(field:field) -> f:format.raw()}>
+	<div class="{settings.styles.framework.fieldWrappingClasses} {settings.styles.framework.offsetClasses}">
+		<f:format.nl2br>{field.text}</f:format.nl2br>
+	</div>
+</div>
