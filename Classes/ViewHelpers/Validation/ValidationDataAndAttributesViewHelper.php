@@ -18,7 +18,7 @@ class ValidationDataAndAttributesViewHelper extends \In2code\Powermail\ViewHelpe
 	 * @param \mixed $iteration Iterationarray for Multi Fields (Radio, Check, ...)
 	 * @return \array for data attributes
 	 */
-	public function render(\In2code\Powermail\Domain\Model\Field $field, $additionalAttributes = array(), $iteration = NULL) {
+	public function render(\In2code\Powermail\Domain\Model\Field $field, array $additionalAttributes = [], $iteration = null) {
 		switch ($field->getType()) {
 			case 'check':
 				// multiple field radiobuttons
