@@ -25,7 +25,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'constraints' => array(
 		'depends' => array(
 			'typo3' => '7.6.0-8.99.99',
-			'powermail' => '3.0.0-3.99.99',
+			'powermail' => '2.20.0-2.25.99',
 		),
 		'conflicts' => array(
 		),

@@ -14,7 +14,7 @@ config.tx_extbase {
 		classes {
 			WorldDirect\Powermailext\Domain\Model\Field {
 				mapping {
-					tableName = tx_powermail_domain_model_field
+					tableName = tx_powermail_domain_model_fields
 					recordType = Tx_Powermailext_Domain_Model_Field
 					columns {
 						tx_powermailext_disabled.mapOnProperty = disabled
