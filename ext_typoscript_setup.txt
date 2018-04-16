@@ -6,9 +6,6 @@ config.tx_extbase {
 		In2code\Powermail\Domain\Validator\InputValidator {
 			className = WorldDirect\Powermailext\Domain\Validator\InputValidator
 		}
-		In2code\Powermail\ViewHelpers\Validation\ValidationDataAttributeViewHelper {
-			className = WorldDirect\Powermailext\ViewHelpers\Validation\ValidationDataAndAttributesViewHelper
-		}
 	}
 	persistence {
 		classes {
