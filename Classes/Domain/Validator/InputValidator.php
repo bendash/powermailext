@@ -1,6 +1,9 @@
 <?php
 namespace WorldDirect\Powermailext\Domain\Validator;
 
+use In2code\Powermail\Domain\Model\Field;
+use In2code\Powermail\Domain\Model\Mail;
+
 class InputValidator extends \In2code\Powermail\Domain\Validator\InputValidator {
 		
 	/**
@@ -40,22 +43,6 @@ class InputValidator extends \In2code\Powermail\Domain\Validator\InputValidator 
 		}
 
 		return $this->isValidState();
-	}
-
-	/**
-	 * Get Answer from given field out of Mail object
-	 *
-	 * @param \In2code\Powermail\Domain\Model\Field $field
-	 * @param \In2code\Powermail\Domain\Model\Mail $mail
-	 * @return \string Answer value
-	 */
-	protected function getAnswerFromField($field, $mail) {
-		foreach ($mail->getAnswers() as $answer) {
-			if ($answer->getField()->getUid() == $field->getUid()) {
-				return $answer->getValue();
-			}
-		}
-		return '';
 	}
 	
 	/**
