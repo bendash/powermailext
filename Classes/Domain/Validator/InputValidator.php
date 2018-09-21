@@ -34,10 +34,9 @@ class InputValidator extends \In2code\Powermail\Domain\Validator\InputValidator 
 			foreach ($page->getFields() as $field) {
 				// check if field should be validated, if a validation condition is attached to it
 				if($this->fieldShouldBeValidated($field, $mail)) {
-					$this->isValidField(
-						$field,
-						$this->getAnswerFromField($field, $mail)
-					);
+					$answer = $this->getAnswerFromField($field, $mail);
+					$this->isValidFieldInMandatoryValidation($field, $answer);
+					$this->isValidFieldInStringValidation($field, $answer);
 				}
 			}
 		}
